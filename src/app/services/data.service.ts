@@ -1,0 +1,48 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+ 
+// Typescript custom enum for search types (optional)
+export enum SearchType {
+  all = '',
+  movie = 'movie',
+  series = 'series',
+  episode = 'episode'
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+  url = 'https://api.github.com/search/repositories?per_page=5&q=react';
+  // url = 'https://api.github.com/search/repositories';
+ 
+  constructor(private http: HttpClient) { }
+
+  /**
+  * Get data from the OmdbApi 
+  * map the result to return only the results that we need
+  * 
+  * @param {string} title Search Term
+  * @param {SearchType} type movie, series, episode or empty
+  * @returns Observable with the search results
+  */
+ searchData(title: string, type: SearchType): Observable<any> {
+  console.log('----- searchData from ' + this.url);
+  console.log('----- searchData title ' + title);
+  console.log('----- searchData type ' + type);
+  
+  // // return this.http.get('${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKey}').pipe(
+  // return this.http.get('${this.url}?per_page=5&q=react').pipe(
+  //     map(results => results['Search'])
+  // );
+
+  return this.http.get('https://api.github.com/search/repositories?per_page=5&q=react').pipe(
+    // map(results => console.log('----- results',results['total_count']))
+      map(results => results['items'])
+    );
+
+}
+
+}
