@@ -14,7 +14,8 @@ export class HomePage implements OnInit {
   results: Observable<any>;
   searchTerm: string = '';
   type: SearchType = SearchType.all;
- 
+  count: string = '0';
+
   baseUrl:string = "https://api.github.com/search/repositories?per_page=5&q=react";
 
   /**
@@ -30,5 +31,7 @@ export class HomePage implements OnInit {
     // Call our service function which returns an Observable
     this.results = this.dataService.searchData(this.searchTerm, this.type);
     console.log('----- this.results',this.results);
+
+    this.count = '0';
   }
 }

@@ -15,8 +15,8 @@ export enum SearchType {
   providedIn: 'root'
 })
 export class DataService {
-  url = 'https://api.github.com/search/repositories?per_page=5&q=react';
-  // url = 'https://api.github.com/search/repositories';
+  // url = 'https://api.github.com/search/repositories?per_page=5&q=react';
+  url = 'https://api.github.com/search/repositories';
  
   constructor(private http: HttpClient) { }
 
@@ -38,10 +38,13 @@ export class DataService {
   //     map(results => results['Search'])
   // );
 
-  return this.http.get('https://api.github.com/search/repositories?per_page=5&q=react').pipe(
+  let urlPost = this.url + '?per_page=5&q=' + title;
+  console.log('----- urlPost',urlPost);
+
+  return this.http.get(urlPost).pipe(
     // map(results => console.log('----- results',results['total_count']))
       map(results => results['items'])
-    );
+      );
 
 }
 
