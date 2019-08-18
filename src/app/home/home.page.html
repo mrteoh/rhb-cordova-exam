@@ -10,24 +10,35 @@
 
   <!-- Item Labels -->
 <ion-item>
-  <ion-label>{{count}} repository results</ion-label>
+  <ion-label>0 repository results</ion-label>
 </ion-item>
 
   <ion-list>
  
-    <ion-item button *ngFor="let item of (results | async)" [routerLink]="['/', 'movies', item.imdbID]">
-      <ion-label text-wrap color="primary">
+    <ion-item button *ngFor="let item of (results | async)">
+      <ion-label slot="start"text-wrap color="#000">
         {{ item.full_name }}
-        <h3>{{ item.description }}</h3>
-        <h3>Updated on {{ item.updated_at }}</h3>
+        <h3 >{{ item.description }}</h3>
+        <h5>Updated on {{ item.updated_at }}</h5>
       </ion-label>
- 
-      <ion-icon slot="end" *ngIf="item.Type == 'movie'" name="videocam"></ion-icon>
-      <ion-icon slot="end" *ngIf="item.Type == 'series'" name="tv"></ion-icon>
-      <ion-icon slot="end" *ngIf="item.Type == 'game'" name="logo-game-controller-b"></ion-icon>
- 
+      
+      <ion-label slot="end">{{item.language}}</ion-label>
+      <ion-label slot="end">{{item.watchers_count}}</ion-label>
     </ion-item>
- 
+
   </ion-list>
  
+  <!-- nav Bar -->
+  <ion-button color="light" (click)="presentAlert()">1</ion-button>
+  <ion-button color="light" (click)="presentAlert()">2</ion-button>
+  <ion-button color="light" (click)="presentAlert()">3</ion-button>
+  <ion-button color="light" (click)="presentAlert()">4</ion-button>
+  <ion-button color="light" (click)="presentAlert()">5</ion-button>
+  <ion-button color="light" (click)="presentAlert()">6</ion-button>
+  <ion-button color="light" (click)="presentAlert()">7</ion-button>
+  <ion-button color="light" (click)="presentAlert()">8</ion-button>
+  <ion-button color="light" (click)="presentAlert()">9</ion-button>
+  <ion-button color="light" (click)="presentAlert()">10</ion-button>
+  <ion-button color="light" (click)="presentAlert()">20</ion-button>
+
 </ion-content>

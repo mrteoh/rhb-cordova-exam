@@ -33,18 +33,19 @@ export class DataService {
   console.log('----- searchData title ' + title);
   console.log('----- searchData type ' + type);
   
-  // // return this.http.get('${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKey}').pipe(
-  // return this.http.get('${this.url}?per_page=5&q=react').pipe(
-  //     map(results => results['Search'])
-  // );
-
-  let urlPost = this.url + '?per_page=5&q=' + title;
+  let urlPost = this.url + '?per_page=10&q=' + title;
   console.log('----- urlPost',urlPost);
 
-  return this.http.get(urlPost).pipe(
-    // map(results => console.log('----- results',results['total_count']))
+  // return this.http.get(urlPost).pipe(
+  //   // map(results => console.log('----- results',results['total_count']))
+  //     map(results => results['items'])
+  // );
+
+  return this.http.get(urlPost)
+  .pipe(
+  // map(results => console.log('----- results',results['total_count']))
       map(results => results['items'])
-      );
+  );
 
 }
 
