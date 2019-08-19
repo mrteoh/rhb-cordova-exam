@@ -171,7 +171,7 @@ let DataService = class DataService {
         // return this.http.get('${this.url}?per_page=5&q=react').pipe(
         //     map(results => results['Search'])
         // );
-        let urlPost = this.url + '?per_page=5&q=' + title;
+        let urlPost = this.url + '?per_page=10&q=' + title;
         console.log('----- urlPost', urlPost);
         return this.http.get(urlPost).pipe(
         // map(results => console.log('----- results',results['total_count']))
