@@ -4,12 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
  
 // Typescript custom enum for search types (optional)
-export enum SearchType {
-  all = '',
-  movie = 'movie',
-  series = 'series',
-  episode = 'episode'
-}
+export enum SearchType {}
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +16,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   /**
-  * Get data from the OmdbApi 
+  * Get data from the API 
   * map the result to return only the results that we need
   * 
   * @param {string} title Search Term
@@ -35,11 +30,6 @@ export class DataService {
   
   let urlPost = this.url + '?per_page=10&q=' + title;
   console.log('----- urlPost',urlPost);
-
-  // return this.http.get(urlPost).pipe(
-  //   // map(results => console.log('----- results',results['total_count']))
-  //     map(results => results['items'])
-  // );
 
   return this.http.get(urlPost)
   .pipe(

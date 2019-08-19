@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
 
   /**
    * Constructor of our first page
-   * @param movieService The movie Service to get data
+   * @param dataService The data Service to get data
    */
   constructor(private dataService: DataService, private alertController: AlertController) {}
 
